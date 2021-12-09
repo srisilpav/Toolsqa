@@ -17,12 +17,18 @@ class ButtonTests(unittest.TestCase):
 
     def test_textbox(self):
         driver = self.driver
+
+        # double click on the "Double Click Me" button
         element = driver.find_element_by_id("doubleClickBtn")
         action = ActionChains(driver)
         action.double_click(element).perform()
+
+        # right click on the "Right Click Me" button
         element = driver.find_element_by_id("rightClickBtn")
         action = ActionChains(driver)
         action.context_click(element).perform()
+
+        #  click on the " Click Me" button
         element = driver.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]")
         element.click()
 

@@ -16,6 +16,8 @@ class CheckBoxTests(unittest.TestCase):
 
     def test_checkbox(self):
         driver = self.driver
+
+        # Select the "Home" check box
         element = driver.find_element_by_xpath("//*[@id='tree-node']/ol/li/span/label")
         element.click()
 

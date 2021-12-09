@@ -16,10 +16,14 @@ class UploadDownloadTests(unittest.TestCase):
 
     def test_uploadDownloadTests(self):
         driver = self.driver
+
+        # click on the "Download" button to download the file.
         wait = WebDriverWait(driver, 20)
         element = wait.until(expected_conditions.visibility_of_element_located(
             (By.ID, "downloadButton")))
         element.click()
+
+        # Uploading a file
         element = driver.find_element_by_id("uploadFile")
         element.send_keys("C:\\Users\\vssil\\Apple\\Fuji.JPG")
 

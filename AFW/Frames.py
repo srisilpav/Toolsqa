@@ -16,8 +16,10 @@ class FramesTests(unittest.TestCase):
 
     def test_frames(self):
         driver = self.driver
+
+        # switch to frames to check the frames are present on the page
         driver.switch_to.frame("frame1")
-        element=driver.find_element_by_xpath("//*[@id='sampleHeading']")
+        element = driver.find_element_by_xpath("//*[@id='sampleHeading']")
         element.is_displayed()
         driver.switch_to.default_content()
         driver.switch_to.frame("frame2")

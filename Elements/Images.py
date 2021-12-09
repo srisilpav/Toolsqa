@@ -16,25 +16,24 @@ class ImagesTests(unittest.TestCase):
 
     def test_imageTests(self):
         driver = self.driver
-        # img1 = driver.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[2]/div[1]/img[1]")
-        # width = img1.get_attribute("width")
+
+        # Check "Tools QA" image is displayed or not
         wait = WebDriverWait(driver, 20)
         element = wait.until(expected_conditions.visibility_of_element_located(
             (By.XPATH, "//*[@id='app']/div/div/div[2]/div[2]/div[1]/img[1]")))
-
         size = element.size
         print(size)
-        if size["width"] == 347 :
+        if size["width"] == 347:
             print("Image is displayed")
         else:
             print("Image is broken")
+
+            # Check broken image is displayed or not
         wait = WebDriverWait(driver, 20)
         element = wait.until(expected_conditions.visibility_of_element_located(
             (By.XPATH, "//*[@id='app']/div/div/div[2]/div[2]/div[1]/img[2]")))
-
         size = element.size
         print(size)
-
         if size["width"] == 16:
             print("Image is broken")
         else:

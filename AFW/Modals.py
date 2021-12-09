@@ -16,10 +16,14 @@ class ModalTests(unittest.TestCase):
 
     def test_modals(self):
         driver = self.driver
+
+        # click on the "Small modal" button to open the small modal and then close the modal.
         element = driver.find_element_by_xpath("//*[@id='showSmallModal']")
         element.click()
-        element=driver.find_element_by_id("closeSmallModal")
+        element = driver.find_element_by_id("closeSmallModal")
         element.click()
+
+        # click on the "Large modal" button to open the large modal and then close the modal.
         element = driver.find_element_by_id("showLargeModal")
         element.click()
         element = driver.find_element_by_id("closeLargeModal")

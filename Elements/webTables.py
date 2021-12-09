@@ -16,6 +16,8 @@ class WebTableTests(unittest.TestCase):
 
     def test_webTable(self):
         driver = self.driver
+
+        # Add an entry too the table by clicking on "Add" button.
         element = driver.find_element_by_id("addNewRecordButton")
         element.click()
         element = driver.find_element_by_id("firstName")
@@ -33,7 +35,6 @@ class WebTableTests(unittest.TestCase):
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "submit")))
         driver.find_element_by_id("submit").click()
 
-
         # Editing the lastname of third row
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "edit-record-3")))
         element = driver.find_element_by_id("edit-record-3")
@@ -44,12 +45,10 @@ class WebTableTests(unittest.TestCase):
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "submit")))
         driver.find_element_by_id("submit").click()
 
-
         # Deleting the second row
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "delete-record-2")))
         element = driver.find_element_by_id("delete-record-2")
         element.click()
-
 
     def tearDown(self) -> None:
         self.driver.close()

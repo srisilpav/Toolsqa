@@ -16,6 +16,8 @@ class TextBoxTests(unittest.TestCase):
 
     def test_textbox(self):
         driver = self.driver
+
+        # Fill all details of the form and submit by clicking "submit" button
         element = driver.find_element_by_id("userName")
         element.send_keys("Sri Rama")
         element = driver.find_element_by_id("userEmail")
@@ -24,8 +26,12 @@ class TextBoxTests(unittest.TestCase):
         element.send_keys("012345 Seshu Seyana complex, vaikunta")
         element = driver.find_element_by_id("permanentAddress")
         element.send_keys("012345 Seshu Seyana complex, vaikunta")
-        WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "submit")))
-        driver.find_element_by_id("submit").click()
+        
+        # WebDriverWait(driver,3000).until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='submit']")))
+        # time.sleep method suspends execution for the given number of seconds. It is not recommended to use it though.
+        time.sleep(5)
+        driver.find_element_by_xpath("//*[@id='submit']").click()
+        time.sleep(5)
 
     def tearDown(self) -> None:
         self.driver.close()

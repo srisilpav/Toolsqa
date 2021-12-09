@@ -16,11 +16,14 @@ class DynamicPropertiesTests(unittest.TestCase):
 
     def test_dynamicProperties(self):
         driver = self.driver
+
+        # check "Will enable 5 seconds" button enables after 5 seconds
         element = driver.find_element_by_id("enableAfter")
         print(element.is_enabled())
+
+        # check "Color Change" button changes the color to red after 5 seconds
         element = driver.find_element_by_id("colorChange")
         print(element.get_attribute("class"))
-
         if element.get_attribute("class") == "mt-4 btn btn-primary":
             print("color change is in red color")
         else:
@@ -32,11 +35,12 @@ class DynamicPropertiesTests(unittest.TestCase):
         print(element.is_enabled())
         element = driver.find_element_by_id("colorChange")
         print(element.get_attribute("class"))
-
         if element.get_attribute("class") == "mt-4 text-danger btn btn-primary":
             print("color change is in white color")
         else:
             print("color changed to red")
+
+        # check "Visible After 5 Seconds" button changes the color to red after 5 seconds
         element = driver.find_element_by_id("enableAfter")
         print(element.is_displayed())
 

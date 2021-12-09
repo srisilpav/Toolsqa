@@ -16,6 +16,9 @@ class LinksTests(unittest.TestCase):
 
     def test_links(self):
         driver = self.driver
+
+        # Click on "Home" link to check if open a new tab, then change the window handle and close the tab .
+        # Come back to current window.
         element = driver.find_element_by_id("simpleLink")
         element.click()
         window_before = driver.window_handles[0]
@@ -23,6 +26,9 @@ class LinksTests(unittest.TestCase):
         driver.switch_to.window(window_after)
         driver.close()
         driver.switch_to.window(window_before)
+
+        # Click on "HomesXYgT" link to check if open a new tab, then change the window handle and close the tab .
+        # Come back to current window.
         element = driver.find_element_by_id("dynamicLink")
         element.click()
         window_before = driver.window_handles[0]
@@ -30,21 +36,20 @@ class LinksTests(unittest.TestCase):
         driver.switch_to.window(window_after)
         driver.close()
         driver.switch_to.window(window_before)
+
+        # click on all the api calls
         element = driver.find_element_by_id("created")
         element.click()
-        element=driver.find_element_by_xpath("//*[@id='linkResponse']/b[1]")
-        self.assertEqual(element.text,"201","value is not same")
+        element = driver.find_element_by_xpath("//*[@id='linkResponse']/b[1]")
+        self.assertEqual(element.text, "201", "value is not same")
         element = driver.find_element_by_id("no-content")
         element.click()
         element = driver.find_element_by_id("moved")
         element.click()
-        WebDriverWait(driver,30).until(expected_conditions.element_to_be_clickable((By.ID,"bad-request")))
+        WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "bad-request")))
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "unauthorized")))
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "forbidden")))
         WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.ID, "invalid-url")))
-
-
-
 
     def tearDown(self) -> None:
         self.driver.close()

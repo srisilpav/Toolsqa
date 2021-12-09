@@ -16,11 +16,13 @@ class NestedFrameTests(unittest.TestCase):
 
     def test_nestedFrames(self):
         driver = self.driver
+
+        # check weather the frames are present on the page
         driver.switch_to.frame("frame1")
         element = driver.find_element_by_tag_name("body")
         print(element.text)
         driver.switch_to.default_content()
-        element= driver.find_element_by_xpath("/html/body/iframe")
+        element = driver.find_element_by_xpath("/html/body/iframe")
         driver.switch_to.frame(element)
         element = driver.find_element_by_xpath("/html")
         print(element.is_displayed())

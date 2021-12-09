@@ -1,29 +1,34 @@
 import time
 import unittest
 from selenium import webdriver
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-class RadioButtonTests(unittest.TestCase):
+class ProgressBarTests(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
-        self.driver.get("https://demoqa.com/radio-button")
+        self.driver.get("https://demoqa.com/progress-bar")
 
-    def test_radiobutton(self):
+    def test_progressBar(self):
         driver = self.driver
 
-        # Select the radio buttons "Yes" and "Impressive" consecutively
-        element = driver.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[2]/label")
+        # check the progress bar functionality
+        element = driver.find_element_by_id("startStopButton")
         element.click()
-        element = driver.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/label")
+        time.sleep(2)
+        element.click()
+        time.sleep(2)
+        element.click()
+        time.sleep(2)
         element.click()
 
-    def tearDown(self) -> None:
+    def tearDown(self):
         self.driver.close()
 
 
